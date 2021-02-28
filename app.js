@@ -256,3 +256,33 @@ console.log(dt22); // { carName: "Ford", company: "Raj Corp" }
 //5. Using ES6 classes to create objects
 
 console.log('--------------------12------------------------');
+
+const yourArray = [1, 1, 2, 3, 4, 5, 5]
+
+const yourArrayWithoutDuplicates = [...new Set(yourArray)]
+
+let duplicates = [...yourArray]
+yourArrayWithoutDuplicates.forEach((item) => {
+  const i = duplicates.indexOf(item)
+  duplicates = duplicates
+    .slice(0, i)
+    .concat(duplicates.slice(i + 1, duplicates.length))
+})
+
+console.log(duplicates) //[ 1, 5 ]
+
+// --- 2
+let duplicatess = []
+
+const tempArray = [...yourArray].sort()
+
+for (let i = 0; i < tempArray.length; i++) {
+  if (tempArray[i + 1] === tempArray[i]) {
+    duplicatess.push(tempArray[i])
+  }
+}
+
+console.log(duplicates) //[ 1, 5 ]
+
+//https://flaviocopes.com/tags/js/
+console.log('--------------------12------------------------');
