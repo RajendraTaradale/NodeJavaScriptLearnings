@@ -160,4 +160,99 @@ module.exports = { add, sub, name };
 
 console.log('---------------------8-----------------------');
 
+var p1 = {firstName: 'Rajendra', lastName: 'Taradale'};
+var p2 = {firstName: 'Sushant', lastName: 'Patil'};
+
+function say(greeting) {
+  console.log(greeting + ' ' + this.firstName + ' ' + this.lastName);
+}
+// Call invokes the function and allows you to pass in arguments one by one.
+say.call(p1, 'Hello'); 
+say.call(p2, 'Hello'); 
+
+// Apply invokes the function and allows you to pass in arguments as an array.
+say.apply(p1, ['apply Hello','Welcome']);
+say.apply(p2, ['apply Hello']);
+
+// Bind returns a new function, allowing you to pass in a this array and any number of arguments.
+var sayHelloRaj = say.bind(p1);
+sayHelloRaj('123 :');
+
 console.log('--------------------9------------------------');
+
+//The map() method is used for creating a new array from an existing one, 
+//applying a function to each one of the elements of the first array.
+
+const numbers1 = [1, 2, 3, 4];
+const doubled = numbers1.map(item => item * 2);
+console.log(doubled); // [2, 4, 6, 8]
+
+//The filter() method takes each element in an array and it applies a conditional statement against it.
+// If this conditional returns true, the element gets pushed to the output array.
+// If the condition returns false, the element does not get pushed to the output array.
+
+const numbers2 = [1, 2, 3, 4];
+const evens = numbers2.filter(item => item % 2 === 0);
+console.log(evens); // [2, 4]
+
+//The reduce() method reduces an array of values down to just one value. 
+//To get the output value, it runs a reducer function on each element of the array.
+
+const numbers3 = [1, 2, 3, 4];
+const sums = numbers3.reduce(function (result, item) {
+  return result + item;
+}, 0);
+console.log(sums); // 10
+
+numbers3.forEach(function (element) {
+  console.log(element);
+});
+
+console.log('--------------------10------------------------');
+function doSomething(){}
+doSomething.prototype.name = "rajendra taradale";
+console.log(doSomething.prototype);
+
+var a = {a: 1};
+
+var b = Object.create(a);
+
+console.log(a.a); // print 1
+console.log(b.a); // print 1
+b.a=5;
+console.log(a.a); // print 1
+console.log(b.a); // print 5
+delete b.a;
+console.log(a.a); // print 1
+console.log(a.hasOwnProperty('a'));
+
+console.log('--------------------11------------------------');
+//How to create objects in JavaScript
+//1. Creating objects using object literal syntax
+const person = {
+  firstName: 'testFirstName',
+  lastName: 'testLastName'
+};
+//2. Creating objects using the ‘new’ keyword
+const persons = new Object();
+
+//3. Using Object.create() to create new objects
+//The Object.create() method creates a new object, 
+//using an existing object as the prototype of the newly created object.
+const orgObject = { company: 'Raj Corp' };
+const employees = Object.create(orgObject, { name: { value: 'newEmp' } });
+console.log(employees.company); // { company: "Raj Corp" }
+console.log(employees.name); // "newEmp"
+//4. Using Object.assign() to create new objects
+//The Object.assign() method is used to copy the values of all enumerable own properties
+// from one or more source objects to a target object. It will return the target object.
+
+const cmpObject = { company: 'Raj Corp' }
+const carObject = { carName: 'Maruti' }
+
+const dt22 = Object.assign({}, orgObject, carObject);
+
+console.log(dt22); // { carName: "Ford", company: "Raj Corp" }
+//5. Using ES6 classes to create objects
+
+console.log('--------------------12------------------------');
